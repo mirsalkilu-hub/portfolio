@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
-import { sections, EMAIL, PHONE, PHONE_TEL, whatsappLink, LINKEDIN, LINKEDIN_LABEL, GITHUB, GITHUB_LABEL, type Section } from "@/lib/content";
+import { sections, EMAIL, PHONE, PHONE_TEL, whatsappLink, LINKEDIN, LINKEDIN_LABEL, type Section } from "@/lib/content";
 import { hasRate, rateLabel, costOf, plans } from "@/lib/pricing";
 import { LinkedInIcon, LinkedInLogo } from "./Social";
 import { SHOW_PRICING } from "@/lib/flags";
@@ -31,7 +31,7 @@ function ContactForm() {
     const form = e.currentTarget.form;
     if (!form || !form.reportValidity()) return; // shows the browser's "please fill this in" hints
     const d = new FormData(form);
-    const text = `Hi Suprabhat, I'm ${d.get("name")}. I'd like to discuss a project.\n\n${d.get("message")}\n\nPhone: ${d.get("phone")}\nEmail: ${d.get("email")}`.slice(0, 900);
+    const text = `Hi Mirsal, I'm ${d.get("name")}. I'd like to discuss a project.\n\n${d.get("message")}\n\nPhone: ${d.get("phone")}\nEmail: ${d.get("email")}`.slice(0, 900);
     window.open(whatsappLink(text), "_blank", "noopener,noreferrer"); // opened straight from the click so it is not blocked
     form.requestSubmit(); // also sends the enquiry by email
   }
@@ -48,7 +48,7 @@ function ContactForm() {
     const payload = { name, email, phone, message, botcheck: spam ? "1" : "" };
 
     // a prefilled WhatsApp message the visitor can send to me with one tap
-    const waText = `Hi Suprabhat, I'm ${name}. I just sent an enquiry from your portfolio.\n\n${message}\n\nPhone: ${phone}\nEmail: ${email}`.slice(0, 900);
+    const waText = `Hi Mirsal, I'm ${name}. I just sent an enquiry from your portfolio.\n\n${message}\n\nPhone: ${phone}\nEmail: ${email}`.slice(0, 900);
     const done = (v: "email" | "mailto") => {
       setVia(v);
       setWa(whatsappLink(waText));
@@ -138,8 +138,8 @@ function ContactForm() {
         </label>
       </div>
       <label>
-        <span>Phone / WhatsApp</span>
-        <input name="phone" type="tel" required placeholder="+91 98765 43210" autoComplete="tel" pattern="[0-9+()\-\s]{7,20}" />
+        <span>Phone / WhatsApp (include country code)</span>
+        <input name="phone" type="tel" required placeholder="+62 812 3456 7890" autoComplete="tel" pattern="[0-9+()\-\s]{7,20}" />
       </label>
       <label>
         <span>Project details</span>
@@ -286,7 +286,16 @@ function About({ s }: { s: Section }) {
         {t.items.slice(cur * per, cur * per + per).map((x, i) => (
           <li key={x.title} style={{ ["--d" as string]: `${i * 70}ms` }}>
             {x.when && <span className="tl-when">{x.when}</span>}
-            <h4>{x.title}</h4>
+            <h4>
+              {x.href ? (
+                <a href={x.href} target="_blank" rel="noopener noreferrer">
+                  {x.title}
+                </a>
+              ) : (
+                x.title
+              )}
+            </h4>
+            {x.emphasis && <p className="tl-sub"><strong>{x.emphasis}</strong></p>}
             {x.sub && <p className="tl-sub">{x.sub}</p>}
             <p>{x.text}</p>
             {x.tags && (
@@ -487,6 +496,11 @@ function FrameCarousel({ cards }: { cards: NonNullable<Section["cards"]> }) {
           </div>
         ))}
       </div>
+      {cards[idx].cta && cards[idx].href && (
+        <a className="btn fvisit" href={cards[idx].href} target="_blank" rel="noopener noreferrer">
+          {cards[idx].cta} <i>→</i>
+        </a>
+      )}
       {n > 1 && (
         <div className="ins-pager fnav">
           <button onClick={() => go(idx - 1)} aria-label="Previous project">
@@ -514,15 +528,15 @@ function Visual({ s }: { s: Section }) {
     return (
       <div className="vis vis-photo">
         <div className="photo">
-          <Image src="/suprabhat.webp" alt="Suprabhat Karmakar" fill priority sizes="(max-width:860px) 80vw, 40vw" style={{ objectFit: "cover", objectPosition: "50% 20%" }} />
+          <Image src="/mirsal-profile.webp" alt="Mirsal" fill priority sizes="(max-width:860px) 80vw, 40vw" style={{ objectFit: "cover", objectPosition: "50% 20%" }} />
         </div>
         <div className="chip c1">
-          <b>5+</b>
+          <b>10+</b>
           <span>years building</span>
         </div>
         <div className="chip c2">
-          <b>2+</b>
-          <span>years AEM EDS</span>
+          <b>5+</b>
+          <span>years in government</span>
         </div>
         <div className="chip c3">
           <Bolt className="h-5 w-5" />
@@ -794,11 +808,11 @@ export default function Portfolio() {
         <div className="logo">
           <ThemeBolt />
           <button onClick={() => goTo(0)} aria-label="Home">
-            17
+            kilu
           </button>
         </div>
         <nav className="top-right">
-          <span className="hide-sm">Suprabhat Karmakar</span>
+          <span className="hide-sm">Mirsal</span>
           <Link className="navlink" href="/projects">
             Projects
           </Link>
@@ -863,13 +877,18 @@ export default function Portfolio() {
               <h1 data-a className="title">
                 {s.title}
               </h1>
-              <p data-a className="desc">
-                {s.desc}
-              </p>
+              <div data-a className="desc">
+                {(Array.isArray(s.desc) ? s.desc : [s.desc]).map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+              {s.pointsHeading && <h2 data-a className="points-heading">{s.pointsHeading}</h2>}
               {s.points && (
                 <ul data-a className="points">
                   {s.points.map((p) => (
-                    <li key={p}>{p}</li>
+                    <li key={typeof p === "string" ? p : p.label}>
+                      {typeof p === "string" ? p : <><strong>{p.label}:</strong> {p.text}</>}
+                    </li>
                   ))}
                 </ul>
               )}
@@ -887,26 +906,21 @@ export default function Portfolio() {
                       {LINKEDIN_LABEL}
                     </a>
                   </li>
-                  <li>
-                    <a href={GITHUB} target="_blank" rel="noopener noreferrer">
-                      {GITHUB_LABEL}
-                    </a>
-                  </li>
-                  <li>Mumbai, India</li>
+                  <li>Makassar, Indonesia</li>
                 </ul>
               )}
               {(s.id === "intro" || s.cta || s.links) && (
                 <div data-a className="cta">
                   {s.id === "intro" && (
                     <>
-                      <button className="btn" onClick={() => goTo(IDX.eds)}>
+                      <Link className="btn" href="/projects">
                         View my work <i>→</i>
-                      </button>
+                      </Link>
                       <button className="btn ghost" onClick={() => goTo(IDX.contact)}>
                         Contact me
                       </button>
                       <a className="btn ghost soc-btn" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-                        <LinkedInLogo /> LinkedIn
+                        <LinkedInLogo /> Instagram
                       </a>
                     </>
                   )}

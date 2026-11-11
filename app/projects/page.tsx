@@ -4,31 +4,29 @@ import Link from "next/link";
 import ThemeBolt from "@/components/ThemeBolt";
 import { LinkedInIcon, LinkedInLogo } from "@/components/Social";
 import ProjectsDial from "@/components/ProjectsDial";
-import { projects } from "@/lib/projects";
-import { PHONE, PHONE_TEL, EMAIL, LINKEDIN } from "@/lib/content";
+import PricingBlock from "@/components/PricingBlock";
+import { sections, PHONE, PHONE_TEL, EMAIL, LINKEDIN } from "@/lib/content";
 import { SHOW_PRICING } from "@/lib/flags";
 import "./projects.css";
 
 export const metadata: Metadata = SHOW_PRICING
   ? {
-      title: "Project case studies & how I work | Suprabhat Karmakar",
-      description: "Detailed case studies of AEM EDS, React and full-stack projects by Suprabhat Karmakar, with a clear view of how I work with clients and an interactive project estimator.",
+      title: "Selected projects & how I work | Mirsal",
+      description: "Explore PINISI, LONTARA, Gameskilu and urlyu.com, with a clear way to estimate your own project.",
     }
   : {
-      title: "Project case studies | Suprabhat Karmakar",
-      description: "Detailed case studies of AEM EDS, React and full-stack projects by Suprabhat Karmakar.",
+      title: "Selected projects | Mirsal",
+      description: "Explore PINISI, LONTARA, Gameskilu and urlyu.com from Mirsal's portfolio.",
     };
 
-const shortName: Record<string, string> = { ngs: "NGS Super", tataaia: "Tata AIA", generali: "Generali Central", vaymora: "Vaymora Foods", siddhivinayak: "Siddhivinayak", starlite: "Starlite Global" };
+const featuredProjects = sections.filter((section) => ["pinisi", "lontara", "gameskilu", "urlyu"].includes(section.id));
 const dialItems = [
   { id: "top", label: "Overview" },
-  ...projects.map((p) => ({ id: p.id, label: shortName[p.id] ?? p.name })),
+  ...featuredProjects.map((project) => ({ id: project.id, label: project.nav })),
   ...(SHOW_PRICING ? [{ id: "pricing", label: "How I work" }] : []),
 ];
 
-export default async function ProjectsPage() {
-  // the pricing block is only loaded (and shipped) when the flag is on
-  const PricingBlock = SHOW_PRICING ? (await import("@/components/PricingBlock")).default : null;
+export default function ProjectsPage() {
   return (
     <div className="pg">
       <ProjectsDial items={dialItems} />
@@ -36,11 +34,11 @@ export default async function ProjectsPage() {
         <div className="logo">
           <ThemeBolt />
           <Link href="/" aria-label="Home">
-            17
+            kilu
           </Link>
         </div>
         <nav className="pg-nav">
-          <a href="#work">Case studies</a>
+          <a href="#work">Projects</a>
           {SHOW_PRICING && <a href="#pricing">How I work</a>}
           <LinkedInIcon href={LINKEDIN} />
           <Link className="pill" href="/?s=contact">
@@ -55,33 +53,15 @@ export default async function ProjectsPage() {
           <Link className="back" href="/">
             ← Back to portfolio
           </Link>
-          <p className="eyebrow">Project case studies</p>
-          <h1 className="title">{SHOW_PRICING ? "What I built, how it was run, and how I work with you" : "What I built and how it was run"}</h1>
+          <p className="eyebrow">Selected projects</p>
+          <h1 className="title">Digital projects built around people and ideas</h1>
           <p className="lead">
-            Six of the 6+ projects I have delivered, from a 3-year enterprise engagement to sites that went live in 7 hours. Below you will find what each one involved, how we worked with the client, who did what{SHOW_PRICING ? ", and a transparent way to estimate your own project" : ""}.
+            Explore four projects from my portfolio: a collaborative learning platform, a hands-on IoT and robotics bootcamp, a gaming portal, and a link-shortening service.
           </p>
-          <div className="pg-stats">
-            <div>
-              <b>6+</b>
-              <span>projects delivered</span>
-            </div>
-            <div>
-              <b>3 yrs</b>
-              <span>longest engagement</span>
-            </div>
-            <div>
-              <b>9 days</b>
-              <span>full-stack store</span>
-            </div>
-            <div>
-              <b>~7 hrs</b>
-              <span>per brochure site</span>
-            </div>
-          </div>
           <div className="pg-jump">
-            {projects.map((p) => (
-              <a key={p.id} href={`#${p.id}`}>
-                {p.name}
+            {featuredProjects.map((project) => (
+              <a key={project.id} href={`#${project.id}`}>
+                {project.nav}
               </a>
             ))}
             {SHOW_PRICING && (
@@ -94,112 +74,83 @@ export default async function ProjectsPage() {
 
         {/* case studies */}
         <div id="work" />
-        {projects.map((p, i) => (
-          <article key={p.id} id={p.id} className="case">
+        {featuredProjects.map((project, i) => {
+          const card = project.cards?.[0];
+          if (!card) return null;
+          const href = card.href ?? project.links?.[0]?.href;
+          const summary = Array.isArray(project.desc) ? project.desc.join(" ") : project.desc;
+
+          return (
+          <article key={project.id} id={project.id} className="case">
             <div className="case-head">
               <span className="case-n">{String(i + 1).padStart(2, "0")}</span>
               <div>
-                <p className="eyebrow">
-                  {p.kind} · {p.industry}
-                </p>
-                <h2>{p.name}</h2>
+                <p className="eyebrow">{project.eyebrow}</p>
+                <h2>{project.nav}</h2>
               </div>
             </div>
 
             <div className="case-grid">
               <div className="case-visual">
-                <a className="frame" href={p.url} target="_blank" rel="noopener noreferrer">
+                <a className="frame" href={href} target="_blank" rel="noopener noreferrer">
                   <div className="frame-bar">
                     <i />
                     <i />
                     <i />
-                    <span>{p.url.replace(/^https?:\/\//, "").replace(/\/$/, "").slice(0, 38)}</span>
+                    <span>{href?.replace(/^https?:\/\//, "").replace(/\/$/, "").slice(0, 38)}</span>
                   </div>
-                  <div className="frame-body" style={p.ratio ? { aspectRatio: p.ratio } : undefined}>
-                    <Image src={p.image} alt={`${p.name} website`} fill sizes="(max-width:900px) 92vw, 46vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+                  <div className="frame-body" style={card.ratio ? { aspectRatio: card.ratio } : undefined}>
+                    {card.image && <Image src={card.image} alt={`${card.title} website`} fill sizes="(max-width:900px) 92vw, 46vw" style={{ objectFit: "cover", objectPosition: "top" }} />}
                   </div>
                   <div className="frame-cap">
                     <div>
-                      <h3>Visit {p.name}</h3>
-                      <p>{p.duration} · {p.durationNote}</p>
+                      <h3>{card.title}</h3>
+                      <p>{card.sub}</p>
                     </div>
                     <span className="arrow">↗</span>
                   </div>
                 </a>
-                <div className="tags">
-                  {p.stack.map((s) => (
-                    <span key={s}>{s}</span>
-                  ))}
-                </div>
               </div>
 
               <div className="case-intro">
-                <p className="case-sum">{p.summary}</p>
-                <p className="case-brief">{p.brief}</p>
-                <div className="facts">
-                  {p.facts.map((f) => (
-                    <div key={f.label}>
-                      <b>{f.n}</b>
-                      <span>{f.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="case-role">
-                  <strong>My role:</strong> {p.role}
-                </p>
+                <p className="case-sum">{project.title}</p>
+                <p className="case-brief">{summary}</p>
               </div>
             </div>
 
             <div className="case-cols">
               <section>
-                <h3>What I built</h3>
-                <div className="deliver">
-                  {p.delivered.map((d) => (
-                    <div key={d.title} className="glass">
-                      <h4>{d.title}</h4>
-                      <p>{d.text}</p>
-                    </div>
-                  ))}
+                <h3>Highlights</h3>
+                <div className="glass">
+                  <ul>
+                    {project.points?.map((point, index) => (
+                      <li key={index}>{typeof point === "string" ? point : `${point.label}: ${point.text}`}</li>
+                    ))}
+                  </ul>
                 </div>
               </section>
               <section>
-                <h3>How we worked</h3>
-                <ol className="steps">
-                  {p.process.map((s) => (
-                    <li key={s.title}>
-                      <strong>{s.title}</strong>
-                      <span>{s.text}</span>
-                    </li>
-                  ))}
-                </ol>
-                <div className="split">
-                  <div className="glass">
-                    <h5>The client provided</h5>
-                    <ul>
-                      {p.clientProvided.map((x) => (
-                        <li key={x}>{x}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="glass">
-                    <h5>I delivered</h5>
-                    <ul>
-                      {p.iDid.map((x) => (
-                        <li key={x}>{x}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <h3>Explore the project</h3>
+                <div className="glass">
+                  <h4>{card.title}</h4>
+                  <p>{card.sub}</p>
+                  {href && (
+                    <a className="btn" href={href} target="_blank" rel="noopener noreferrer">
+                      Visit {card.title} <i>↗</i>
+                    </a>
+                  )}
                 </div>
               </section>
             </div>
           </article>
-        ))}
+          );
+        })}
 
-        {PricingBlock && <PricingBlock />}
+        {SHOW_PRICING && <PricingBlock />}
 
         <section className="pg-cta glass">
           <h2>Have a project in mind?</h2>
-          <p>Let&apos;s bring it to life and give it its own small space on the internet. Share a few details and I&apos;ll reply with next steps.</p>
+          <p>Tell me about your idea or goal, and I&apos;ll reply with practical next steps.</p>
           <div className="cta">
             <Link className="btn" href="/?s=contact">
               Contact me <i>→</i>
@@ -211,7 +162,7 @@ export default async function ProjectsPage() {
               Email
             </a>
             <a className="btn ghost soc-btn" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-              <LinkedInLogo /> LinkedIn
+              <LinkedInLogo /> Instagram
             </a>
           </div>
         </section>

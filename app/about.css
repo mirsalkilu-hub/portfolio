@@ -7,6 +7,8 @@
 .tl li:hover { transform: translateX(4px); border-color: var(--hl-border); box-shadow: 0 18px 32px -24px rgba(75,42,134,.5); }
 .tl-when { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); }
 .tl h4 { font-size: 15px; font-weight: 600; margin-top: 3px; }
+.tl h4 a { color: inherit; text-decoration: none; }
+.tl h4 a:hover { color: var(--teal); }
 .tl-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
 .tl li p:not(.tl-sub) { font-size: 13px; line-height: 1.55; color: var(--body2); margin-top: 6px; }
 @media (max-width: 860px) {

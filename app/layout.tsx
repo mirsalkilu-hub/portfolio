@@ -19,9 +19,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Suprabhat Karmakar | AEM EDS & Full-Stack Developer",
+  title: "Mirsal | AEM EDS & Full-Stack Developer",
   description:
-    "Portfolio of Suprabhat Karmakar: Senior Frontend & Full-Stack Developer specialising in AEM Edge Delivery Services, React, Next.js and e-commerce.",
+    "Portfolio of Mirsal: Senior Frontend & Full-Stack Developer specialising in AEM Edge Delivery Services, React, Next.js and e-commerce.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

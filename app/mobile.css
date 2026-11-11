@@ -34,6 +34,7 @@
   .eyebrow { font-size: 13px; margin-bottom: 10px; }
   .title { font-size: clamp(28px, 8.4vw, 38px); margin-bottom: 12px; }
   .desc { font-size: 14.5px; line-height: 1.6; max-width: none; }
+  .points-heading { margin-top: 14px; font-size: 14px; }
   .points { margin-top: 14px; gap: 8px; }
   .points li { font-size: 13.5px; }
   .cta { margin-top: 18px; gap: 10px; }

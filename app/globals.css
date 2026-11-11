@@ -83,7 +83,10 @@ button { font-family: inherit; }
 .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--purple); }
 .title { font-size: clamp(36px, 4.6vw, 70px); line-height: 1.04; font-weight: 600; letter-spacing: -0.035em; background: linear-gradient(90deg, var(--t1) 0%, var(--t2) 85%); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; max-width: 100%; margin-bottom: 18px; padding-bottom: .06em; }
 .desc { font-size: 16px; line-height: 1.6; color: var(--body); max-width: 480px; }
+.desc p + p { margin-top: 10px; }
+.points-heading { margin-top: 18px; font-size: 15px; font-weight: 600; color: var(--ink); }
 .points { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 10px; }
+.points-heading + .points { margin-top: 8px; }
 .points li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--body2); line-height: 1.45; }
 .points li::before { content: ""; position: absolute; left: 0; top: .35em; width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--teal)); box-shadow: 0 0 0 4px rgba(75,42,134,.1); }
 .points a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--ink); }
@@ -125,6 +128,7 @@ button { font-family: inherit; }
 .frame-cap h3 { font-size: 15px; font-weight: 600; }
 .frame-cap p { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .arrow { color: var(--purple); font-size: 18px; }
+.fvisit { justify-self: start; }
 .vis-frames.n1 .frame { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); }
 .vis-frames.n2 .frame { position: absolute; width: 74%; }
 .vis-frames.n2 .f0 { left: 0; top: 0; }
