@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-
-const SITE = "https://suprabhatkarmakar.is-a.dev";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: SITE, changeFrequency: "monthly", priority: 1 },
-    { url: `${SITE}/projects`, changeFrequency: "monthly", priority: 0.8 },
+    { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE_URL}/projects`, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

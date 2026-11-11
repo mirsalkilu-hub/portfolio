@@ -11,6 +11,7 @@ import "./social.css";
 import "./bubble.css";
 import Script from "next/script";
 import BubbleHover from "@/components/BubbleHover";
+import { SITE_URL } from "@/lib/site";
 
 /** Google Analytics 4 measurement ID (public, not a secret): Analytics > Admin > Data streams. */
 const GA_ID = "G-4XET7ZMETW";
@@ -19,9 +20,37 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mirsal | AEM EDS & Full-Stack Developer",
+  metadataBase: new URL(SITE_URL),
+  title: "Mirsal | Senior Frontend & Full-Stack Developer",
   description:
-    "Portfolio of Mirsal: Senior Frontend & Full-Stack Developer specialising in AEM Edge Delivery Services, React, Next.js and e-commerce.",
+    "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: "Mirsal | Senior Frontend & Full-Stack Developer",
+    description:
+      "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+    siteName: "Mirsal Portfolio",
+    locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Mirsal - Senior Frontend & Full-Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mirsal | Senior Frontend & Full-Stack Developer",
+    description:
+      "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
