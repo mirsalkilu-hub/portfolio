@@ -173,7 +173,7 @@ const allSections: Section[] = [
         items: [
           { title: "I have an idea", text: "Tell me what you want to build. I confirm the scope, then design and build it end to end, including the database and hosting." },
           { title: "I have a goal", text: "Tell me what you want to achieve, such as more enquiries or more sales, and we work out together what the website should do." },
-          { title: "I have an existing site", text: "I can review it with you, suggest improvements, or migrate it, for example to AEM EDS." },
+          { title: "I have an existing site", text: "I can review your site and suggest practical improvements to its responsiveness, accessibility, and performance." },
         ],
       },
       {
@@ -203,7 +203,7 @@ const allSections: Section[] = [
         items: [
           { title: "Local and service businesses", text: "Show your services and areas clearly, make it easy to request a quote or booking, and keep contact details one tap away.", tags: ["Quote requests", "Clear services", "Mobile-first"] },
           { title: "Online stores", text: "Make products easy to find, remove friction at checkout, and add offers and accounts that encourage repeat purchases.", tags: ["Catalogue", "Checkout", "Accounts"] },
-          { title: "Enterprise and content teams", text: "Use reusable components and easy authoring so teams publish quickly and consistently, with speed and accessibility built in.", tags: ["AEM EDS", "Authoring", "Performance"] },
+          { title: "Teams needing digital tools", text: "Connect APIs and databases to build dashboards and internal tools that make day-to-day work easier.", tags: ["API integrations", "Admin dashboards", "Databases"] },
           { title: "Logistics and B2B companies", text: "Explain the service and the process clearly, show credibility, and make it simple for a business buyer to make contact.", tags: ["Credibility", "Clear process", "Enquiries"] },
         ],
       },
@@ -224,7 +224,7 @@ const allSections: Section[] = [
       { title: "Design & frontend development", text: "Modern, brand-aligned and accessible interfaces built with React and Next.js.", get: "UI concept · responsive layouts · reusable components" },
       { title: "Full-stack development", text: "APIs, databases, authentication and admin panels that work together.", get: "REST/GraphQL · databases · secure admin" },
       { title: "E-commerce, end to end", text: "Storefront, catalogue, orders and a back-office you can run yourself.", get: "Product & order management · integrations" },
-      { title: "AEM EDS delivery", text: "Adobe Edge Delivery Services sites with custom blocks and easy authoring.", get: "Blocks · Universal Editor · migrations" },
+      { title: "Performance & accessibility", text: "Improve loading speed and usability with Lighthouse checks and practical accessibility fixes.", get: "Lighthouse audits · accessibility · production support" },
       { title: "Database, hosting & support", text: "After building, I connect your database, host the site and keep it fast, with reliable help after launch.", get: "Database setup · hosting · Lighthouse · fixes" },
     ],
     process: ["Discover", "Design", "Build", "Launch", "Support"],
@@ -284,7 +284,7 @@ const allSections: Section[] = [
     eyebrow: "Skills & stack",
     title: "The skills behind the results",
     desc: "I choose tools that make websites faster, easier to manage and ready to grow. Explore each category to see how my skills can support your project.",
-    points: ["10+ years building frontend experiences", "Led a team of four through planning, code reviews and delivery", "Exploring edge computing with Cloudflare Workers and Adobe App Builder"],
+    points: ["Build responsive interfaces with React, Next.js, JavaScript and Redux", "Connect REST/GraphQL APIs, databases and admin dashboards", "Led a team of four through planning, code reviews and delivery"],
     media: "skills",
     stats: [
       { n: "10+", label: "years experience" },

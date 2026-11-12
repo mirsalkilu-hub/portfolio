@@ -55,14 +55,6 @@ export const projectTypes: ProjectType[] = [
     note: "Authenticated app with forms, data tables and API integration.",
     ref: "Scope varies a lot, so use the add-ons below to shape it.",
   },
-  {
-    id: "eds",
-    bestFor: "Enterprise teams",
-    name: "AEM EDS website",
-    hours: 120,
-    note: "Block library, authoring model, dynamic navigation and go-live.",
-    ref: "Reference: NGS Super, a 3-month build with two client calls every week.",
-  },
 ];
 
 export type Feature = { id: string; name: string; hours: number; note: string };
@@ -76,8 +68,6 @@ export const features: Feature[] = [
   { id: "admin", name: "Admin dashboard", hours: 24, note: "Manage products, orders or content without touching code." },
   { id: "pay", name: "Payment gateway integration", hours: 16, note: "Checkout, order status and payment confirmation." },
   { id: "state", name: "Complex state management (Redux)", hours: 12, note: "Shared state for multi-step flows and many API calls." },
-  { id: "blocks", name: "Custom AEM EDS blocks (each)", hours: 10, note: "Block code, styling and authoring structure." },
-  { id: "nav", name: "Dynamic navigation (AEM EDS)", hours: 12, note: "Header and menu update automatically as pages change." },
   { id: "migrate", name: "Migrate an existing site (per 10 pages)", hours: 12, note: "Content mapping, import scripts and validation." },
   { id: "i18n", name: "Multi-language support", hours: 14, note: "Language switcher and translated content structure." },
   { id: "host", name: "Go-live and domain setup", hours: 2, note: "Deployment, domain connection and final checks." },
@@ -139,7 +129,6 @@ export const plans: Plan[] = [
   { name: "Landing / brochure site", bestFor: "Small businesses", hours: projectTypes[0].hours, blurb: "Up to 5 pages, responsive, fast and hosted." },
   { name: "Business website", bestFor: "Growing companies", hours: projectTypes[1].hours, blurb: "About 10 pages, forms, SEO and animation." },
   { name: "Full-stack online store", bestFor: "Online sellers", hours: projectTypes[2].hours, blurb: "Storefront, admin, database and images." },
-  { name: "AEM EDS website", bestFor: "Enterprise teams", hours: projectTypes[4].hours, blurb: "Blocks, authoring and dynamic navigation." },
 ];
 
 /** What every project includes, shown in the estimator next to the features a visitor picks. */

@@ -56,7 +56,7 @@ export default function ProjectsPage() {
           <p className="eyebrow">Selected projects</p>
           <h1 className="title">Digital projects built around people and ideas</h1>
           <p className="lead">
-            Explore four projects from my portfolio: a collaborative learning platform, a hands-on IoT and robotics bootcamp, a gaming portal, and a link-shortening service.
+            A selection of my work across digital platforms and web products. My focus is on responsive interfaces, practical features, API and database integrations, and accessible user experiences.
           </p>
           <div className="pg-jump">
             {featuredProjects.map((project) => (

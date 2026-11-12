@@ -70,7 +70,7 @@ export default function Image() {
               fontSize: 22,
             }}
           >
-            React | Next.js | AEM Edge Delivery Services
+            React | Next.js | Full-Stack Development
           </div>
           <div
             style={{

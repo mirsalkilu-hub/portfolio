@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Mirsal | Senior Frontend & Full-Stack Developer",
   description:
-    "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+    "I build responsive, accessible websites and web apps with React, Next.js, API integrations, and databases. Based in Makassar, Indonesia, with 10+ years of experience.",
   alternates: {
     canonical: "/",
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Mirsal | Senior Frontend & Full-Stack Developer",
     description:
-      "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+      "I build responsive, accessible websites and web apps with React, Next.js, API integrations, and databases. Based in Makassar, Indonesia, with 10+ years of experience.",
     siteName: "Mirsal Portfolio",
     locale: "en_US",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mirsal | Senior Frontend & Full-Stack Developer",
     description:
-      "I build fast, accessible websites and web apps with React, Next.js, and AEM Edge Delivery Services. Based in Makassar, Indonesia, with 10+ years of experience.",
+      "I build responsive, accessible websites and web apps with React, Next.js, API integrations, and databases. Based in Makassar, Indonesia, with 10+ years of experience.",
     images: ["/opengraph-image"],
   },
 };

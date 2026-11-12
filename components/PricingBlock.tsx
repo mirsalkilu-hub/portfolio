@@ -57,7 +57,7 @@ const faq: FaqItem[] = [
   },
   {
     q: "Can my team update the content ourselves?",
-    a: "Yes, that is a main goal. With AEM EDS I build reusable blocks and set up authoring with the Universal Editor, and for online stores I build an admin dashboard, so routine updates do not need a developer.",
+    a: "For projects that need regular updates, I can build an admin dashboard so your team can manage products, orders or content without editing code.",
   },
   {
     q: "Do you work with remote or international clients?",
@@ -65,7 +65,7 @@ const faq: FaqItem[] = [
   },
   {
     q: "Can you work with my existing site or team?",
-    a: "Yes. I have migrated sites to AEM EDS and worked alongside client teams on enterprise sites, using regular calls, previews and code reviews.",
+    a: "Yes. I can review your existing site, improve its responsiveness, accessibility or performance, and collaborate through previews and code reviews.",
   },
   {
     q: "Do you help after launch?",
@@ -73,7 +73,7 @@ const faq: FaqItem[] = [
   },
   {
     q: "How long does a project take?",
-    a: "It depends on scope. A brochure website took about 7 hours of work, a full online store took 9 days, and a large AEM EDS build took a few months with weekly client calls. After a short call I give you a clear plan for your scope.",
+    a: "It depends on scope. A brochure website took about 7 hours of work, and a full online store took 9 days. After a short call I give you a clear plan for your scope.",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function PricingBlock() {
               <strong>Prices are negotiable</strong> and shared after a short call about your project.
             </>
           )}{" "}
-          You can choose a fixed price or hourly billing. The estimate below depends on four things, and it is calibrated on projects I have actually delivered: two sites in about 7 hours each, a full store in 9 days, and a 3-month AEM EDS build.
+          You can choose a fixed price or hourly billing. The estimate below depends on four things, and it is calibrated on projects I have actually delivered: two brochure sites in about 7 hours each and a full store in 9 days.
         </p>
 
         <div className="trust">
